@@ -1,20 +1,13 @@
-# Angular with Node and Mysql - kickstart
+# tested on ubuntu 24
+# Angular with Node, npm and Mysql - kickstart
   A demo app to demonstrate 3 tier application architecture with Angular (client side), Node.js (server side) and Mysql (database).
-  
+  os level packages: nodejs npm mysql-server
 ## Prerequisite Installation:
 
   1. Install **Node** latest version [*Run node -v if version shown so node properly installed*]
   2. Install **Mysql** and create database and execute below sql query to create users table in your database
-  
-     ```
-      CREATE TABLE Users(
-        ID int NOT NULL AUTO_INCREMENT,
-        Name varchar(255),
-        Age int,
-        City varchar(255),
-        PRIMARY KEY (ID)
-      );
-     ```
+    run db.sh
+
 ## Directory structure:
 
   - node-sql 
@@ -56,5 +49,3 @@
      > recommended controller and services should be in seperate files
   3. APIs are written in *app.js* from where it maps CRUD method of *query.js* file, which is responsible to communicate with database
 
-## Live demo on:
-  *https://node-sql.herokuapp.com/*
