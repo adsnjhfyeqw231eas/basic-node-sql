@@ -22,16 +22,16 @@ services:
       backend:
   
   nodejs:
-    image: 
-volumes:
-  mysql_data: node:18.20.8-bookworm
-  ports:
-    - "8080:8080"
-  networks:
-    backend:
-  depends_on:
-    - mysql_db
-  entrypoint: ["/app/runApp.sh"]
+    build: .
+      context: .
+      target: builder
+    ports:
+      - "8080:8080"
+    networks:
+      backend:
+    depends_on:
+      - mysql_db
+    entrypoint: ["/app/runApp.sh"]
 
 networks:
   backend:
