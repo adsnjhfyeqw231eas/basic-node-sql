@@ -1,7 +1,11 @@
-FROM node:18.20.8-bookworm
+FROM node:18.20.8-bookworm as builder
 RUN apt update -y
 WORKDIR /app
 EXPOSE 8080
-COPY runApp.sh .
+COPY . ./
 RUN chmod +x runApp.sh
-COPY package.json .
+
+FROM mysql:9.5 as builder
+WORKDIR /app
+COPY --from=builder /app/db.sh /db.sh
+CMD ["./db.sh"]
