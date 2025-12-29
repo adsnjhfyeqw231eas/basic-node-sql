@@ -10,7 +10,7 @@ services:
       MYSQL_ROOT_PASSWORD: securerootpassword
       MYSQL_DATABASE: myfirstdatabase
       MYSQL_USER: nodeuser
-      MYSQL_PASSWORD: lnodepass
+      MYSQL_PASSWORD: nodepass
     ports:
       - "3306:3306"
     healthcheck:
