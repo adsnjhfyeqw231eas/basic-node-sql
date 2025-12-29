@@ -19,18 +19,18 @@ services:
       timeout: 3s
       retries: 10
     networks:
-      backend:
-  
+      - backend
+
   nodejs:
-    build: .
+    build:
       context: .
       target: builder
     ports:
       - "8080:8080"
     networks:
-      backend:
+      - backend
     depends_on:
-      - mysql_db
+      - mysql-db
     entrypoint: ["/app/runApp.sh"]
 
 networks:
