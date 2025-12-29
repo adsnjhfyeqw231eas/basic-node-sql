@@ -5,7 +5,7 @@ EXPOSE 8080
 COPY . ./
 RUN chmod +x runApp.sh
 
-FROM mysql:9.5 as builder
+FROM mysql:9.5
 WORKDIR /app
 COPY --from=builder /app/db.sh /db.sh
 CMD ["./db.sh"]
