@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: securerootpassword
+      MYSQL_DATABASE: myfirstdatabase
+      MYSQL_USER: nodeuser
+      MYSQL_PASSWORD: lnodepass
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      backend:
+  
+  nodejs:
+    image: 
+volumes:
+  mysql_data: node:18.20.8-bookworm
+  ports:
+    - "8080:8080"
+  networks:
+    backend:
+  depends_on:
+    - mysql_db
+  entrypoint: ["/app/runApp.sh"]
+
+networks:
+  backend:
+
+volumes:
+  mysql_data:
